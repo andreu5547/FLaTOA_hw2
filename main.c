@@ -78,11 +78,11 @@ void write_graph_to_dot_file(Graph *graph, char *filename, int8_t digraph) { // 
 
     if (digraph) { // Выбор режима записи (ориентированный / неориентированный граф)
         fputs("digraph G {", fp);
-        for (int16_t i = 0; i < graph->num_edges; i++)
+        for (uint16_t i = 0; i < graph->num_edges; i++)
             fprintf(fp, "  %d -> %d;\n", graph->edges[i].src, graph->edges[i].dest);
     } else {
         fputs("graph {", fp);
-        for (int16_t i = 0; i < graph->num_edges; i++)
+        for (uint16_t i = 0; i < graph->num_edges; i++)
             fprintf(fp, "  %d -- %d;\n", graph->edges[i].src,
                     graph->edges[i].dest);
     }
