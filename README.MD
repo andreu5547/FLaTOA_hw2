@@ -8,6 +8,7 @@ This is a C project that includes multiple files and dependencies. This project 
 To build the project, you need to install the following dependencies:
 * CMake
 * C Compiler (e.g. GCC)
+* GraphViz (For installation use the link https://graphviz.org/download/ , download the installer and install the program on your PC. Add it to the system patch.)
 
 ## Cloning the Repository
 
