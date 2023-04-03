@@ -69,11 +69,11 @@ Graph *read_graph_from_file(char *filename) { // Функция считыван
 
     Graph *graph = create_graph(10); // Создание графа
     // создание буферов: для считываемого символа, числа, сохранённого первого числа и флага для проверки корректности колва чисел в строке
-    char buff_c;
+    char buff_c = '0';
     uint16_t buff_n = 0, buff_src = 0;
     bool check_num = false;
 
-    while (true) { // Читаем посимвольно файл
+    while (buff_c != EOF) { // Читаем посимвольно файл
         buff_c = getc(fp);
         if (buff_c != '\n' && buff_c != EOF) { // Если не символ не \n или EOF входим в if
             if ('0' <= buff_c && buff_c <= '9') { // Проверяем является ли символ цифрой
@@ -107,8 +107,7 @@ Graph *read_graph_from_file(char *filename) { // Функция считыван
             buff_src = 0;
             check_num = false;
         }
-        if (buff_c == EOF)
-            break;
+
     }
 
     fclose(fp); // Закрываем файл
@@ -143,7 +142,10 @@ void write_graph_to_dot_file(Graph *graph, char *filename, bool digraph) { // Ф
 
     char command[100]; // Создание и отправка команды для вызова GraphViz'a
     sprintf(command, "dot -Tpng %s -o %s.png", filename, filename);
-    system(command);
+    if (system(command)) { // Проверяем выделилась ли память
+        puts("Error use GraphViz!\nCheck your configuration of GraphViz.");
+        exit(1);
+    }
 }
 
 void free_graph(Graph *graph) { // Функция очистки памяти, выделенной для графа
