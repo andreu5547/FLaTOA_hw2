@@ -9,6 +9,7 @@
 #define INPUT_FILE "graph.txt" // Файл входных данных (по умолчанию)
 #define OUTPUT_FILE "graph.dot" // Файл выходных данных для GraphViz'a
 #define COEFF_UP_MEMORY 2 // Коэффициент увеличения выделенной памяти
+#define BASE_CAPACITY 10
 
 #define swap_Edge(a, b) Edge temp = a; \
                         a = b; \
@@ -67,7 +68,7 @@ Graph *read_graph_from_file(char *filename) { // Функция считыван
         return NULL;
     }
 
-    Graph *graph = create_graph(10); // Создание графа
+    Graph *graph = create_graph(BASE_CAPACITY); // Создание графа
     // создание буферов: для считываемого символа, числа, сохранённого первого числа и флага для проверки корректности колва чисел в строке
     char buff_c = '0';
     uint16_t buff_n = 0, buff_src = 0;
