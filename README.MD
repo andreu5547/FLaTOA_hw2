@@ -28,3 +28,12 @@ Before starting the build process, you need to clone the repository to your loca
 5. Build the project:
 ```cmake --build .```
 6. Profit
+
+## Run
+* Usage: ```Usage: FLaTOA_hw2 <input filename> <directed> <weighted> <del_repeat>```
+* Arguments:
+    1. \<input filename>: Name of the file with the graph // string
+    2. \<directed>: Directed or undirected graph // true or false (1, 0)
+    3. \<weighted>: Weighted or unweighted graph // true or false (1, 0)
+    4. \<del_repeat>: Delete duplicate edges in a graph // true or false (1, 0)
+* Example: ```Example: FLaTOA_hw2 graph.txt true false true```
